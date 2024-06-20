@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +23,7 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+    @JsonIgnore // Evita loops infinitos (order serializar user, user serializar order, order serializar user ...)
     @OneToMany(mappedBy="client") // O atributo do outro lado da associação é client (conforme está escrito em Order)
     private List<Order> orders = new ArrayList<>();
 

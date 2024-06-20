@@ -1,3 +1,4 @@
+### Users
 GET http://localhost:8080/users
 
 ###
@@ -5,3 +6,16 @@ GET http://localhost:8080/users/1
 
 ###
 GET http://localhost:8080/users/2
+
+### Orders
+###
+GET http://localhost:8080/orders
+
+###
+GET http://localhost:8080/orders/1
+
+###
+GET http://localhost:8080/orders/2
+
+###
+GET http://localhost:8080/orders/3
