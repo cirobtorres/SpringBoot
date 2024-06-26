@@ -21,7 +21,7 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @JsonIgnore
+    @JsonIgnore // Evita loops infinitos de relacionamentos bidirecionais (category serializa product, product serializa category, category serializa product ...)
     @ManyToMany(mappedBy="categories") // O nome do atributo em Product que está na outra ponta da relação many-to-many -> Set<Category> categories = new HashSet<>()
     private Set<Product> products = new HashSet<>();
 
