@@ -6,12 +6,15 @@ import java.util.Set;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 // import jakarta.persistence.Transient;
 
@@ -31,7 +34,9 @@ public class Product implements Serializable {
         joinColumns=@JoinColumn(name="product_id"), // O nome da chave estrangeira em Product
         inverseJoinColumns=@JoinColumn(name="category_id") // O nome da chave estrangeira em Category
     )
-    private Set<Category> categories = new HashSet<>();
+    private Set<Category> categories = new HashSet<>(); // É usado Set em vez de List/Array para não admitirmos repetição de categorias
+    @OneToMany(mappedBy="id.product") // O atributo "id" de OrderItem é do tipo OrderItemPK. Em OrderItemPK o id de product está armazenado no atributo "product" 
+    private Set<OrderItem> items = new HashSet<>(); // É usado Set em vez de List/Array para não admitirmos repetição de um mesmo item
 
     public Product() {}
 
@@ -85,6 +90,15 @@ public class Product implements Serializable {
 
     public Set<Category> getCategories() {
         return categories;
+    }
+
+    @JsonIgnore
+    public Set<Order> getOrders() {
+        Set<Order> set = new HashSet<>();
+        for(OrderItem item : items) {
+            set.add(item.getOrder());
+        }
+        return set;
     }
 
     @Override
