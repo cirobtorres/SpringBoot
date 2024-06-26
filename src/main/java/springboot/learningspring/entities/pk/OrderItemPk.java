@@ -10,6 +10,10 @@ import springboot.learningspring.entities.Product;
 
 @Embeddable
 public class OrderItemPk implements Serializable {
+    // Em POO não existe chave primária composta
+    // Essa classe é uma classe auxiliar para representar o par Product/Order
+    // O par Product/Order é quem vai identificar o objeto OrderItem
+    // Quantidade no carrinho e preço na época do pedido não são atributos de Product nem de Order
     @ManyToOne
     @JoinColumn(name="order_id")
     private Order order;
