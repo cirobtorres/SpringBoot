@@ -1,0 +1,7 @@
+package springboot.learningspring.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import springboot.learningspring.entities.Product;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {}

@@ -32,3 +32,22 @@ GET http://localhost:8080/orders/2
 
 ###
 GET http://localhost:8080/orders/3
+
+### Products
+###
+GET http://localhost:8080/products
+
+###
+GET http://localhost:8080/products/1
+
+###
+GET http://localhost:8080/products/2
+
+###
+GET http://localhost:8080/products/3
+
+###
+GET http://localhost:8080/products/4
+
+###
+GET http://localhost:8080/products/5
