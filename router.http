@@ -6,6 +6,18 @@ GET http://localhost:8080/users/1
 
 ###
 GET http://localhost:8080/users/2
+GET http://localhost:8080/users/1
+
+### Insert
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+    "name": "Bob Brown",
+    "email": "bob@gmail.com",
+    "phone": "977557755",
+    "password": "123456"
+}
 
 ### Orders
 ###
