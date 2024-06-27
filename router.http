@@ -19,6 +19,9 @@ Content-Type: application/json
     "password": "123456"
 }
 
+### Delete
+DELETE http://localhost:8080/users/3
+
 ### Orders
 ###
 GET http://localhost:8080/orders
